@@ -1,10 +1,45 @@
-/*
-To change this license header, choose License Headers in Project Properties.
-To change this template file, choose Tools | Templates
-and open the template in the editor.
-*/
-/* 
-    Created on : 19-Mar-2017, 5:16:50 PM
-    Author     : robin
-*/
-
+body {
+    position: relative;
+    text-align: left;
+}
+.mainBox{
+    display: flex;
+    justify-content: space-between;
+    width: 500px;
+}
+.mainTime{
+    font-size: 30px;
+}
+.startWork{
+    
+}
+.stop{
+    
+}
+.startBreak{
+    
+}
+.workTimer {
+    
+}
+.breakTimer {
+    
+}
+.breakPlus {
+    
+}
+.breakMinus {
+    
+}
+.workPlus {
+    
+}
+.workMinus {
+    
+}
+.workTime{
+    
+}
+.breakTime{
+    
+}

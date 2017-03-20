@@ -6,11 +6,32 @@ and open the template in the editor.
 -->
 <html>
     <head>
-        <title>TODO supply a title</title>
+        <title>Pomodoro Clock</title>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel='stylesheet' href='style.css'>
     </head>
     <body>
-        <div>TODO write content</div>
+        <div>Pomodoro Clock</div>
+        <div class='mainBox'>
+            <div class="workTimer">
+                <div class="workTime" id="workTime">10</div>
+            <button class="workPlus" onclick="workPlus()">+</button>
+            <button class="workMinus" onclick="workMinus()">-</button>
+            </div>
+            <div>
+            <div class='mainTime' id='mainTime'>0</div>
+            <button class='startWork' onclick='startWork()'>Start Work</button>
+            <button class='stop' onclick='stop()'>Stop</button>
+            <button class="reset" onclick="reset()">Reset</button>
+            <button class='startBreak' onclick='startBreak()'>Start Break</button>            
+            </div>
+            <div class="breakTimer">
+                <div class="breakTime" id="breakTime">5</div>
+            <button class="breakPlus" onclick="breakPlus()">+</button>
+            <button class="breakMinus" onclick="breakMinus()">-</button>
+            </div>
+        </div>
+        <script src='javascript.js'></script>
     </body>
 </html>
