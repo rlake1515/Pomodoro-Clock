@@ -10,23 +10,33 @@ and open the template in the editor.
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link rel='stylesheet' href='style.css'>
+        <script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+        <link rel="stylesheet" href="http://netdna.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css">
+        <script src="jquery.knob.js"></script>
+        <script src="js/jquery.throttle.js"></script>
+        <link href="jquery.classycountdown.css" rel="stylesheet">
+        <script src="js/jquery.classycountdown.js"></script>
+
     </head>
     <body>
-        <div>Pomodoro Clock</div>
-        <div class='mainBox'>
+        <div class='mainBox container-fluid'>
             <div class="workTimer">
+                <div>Work Interval</div>
                 <div class="workTime" id="workTime">10</div>
             <button class="workPlus" onclick="workPlus()">+</button>
             <button class="workMinus" onclick="workMinus()">-</button>
             </div>
             <div>
-            <div class='mainTime' id='mainTime'>0</div>
-            <button class='startWork' onclick='startWork()'>Start Work</button>
-            <button class='stop' onclick='stop()'>Stop</button>
-            <button class="reset" onclick="reset()">Reset</button>
+              <canvas class='canvas' id='canvas1' width='250' height='250'>
+              </canvas>
+            <div class='mainTime' id='mainTime'>0</div> 
+            <button class='startWork' onclick='startWork(); beginCountdown();'>Start Work</button>
+            <button class='stop' onclick='stop(); endCountdown();'>Stop</button>
+            <button class="reset" onclick="reset(); resetCountdown();">Reset</button>
             <button class='startBreak' onclick='startBreak()'>Start Break</button>            
             </div>
             <div class="breakTimer">
+                <div>Break Interval</div>
                 <div class="breakTime" id="breakTime">5</div>
             <button class="breakPlus" onclick="breakPlus()">+</button>
             <button class="breakMinus" onclick="breakMinus()">-</button>
