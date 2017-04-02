@@ -19,12 +19,17 @@ and open the template in the editor.
 
     </head>
     <body>
+        <audio id='chime'>
+            <source src='Chime.mp3' type='audio/mp3'>
+        </audio>
         <div class='mainBox container-fluid'>
             <div class="workTimer">
-                <div>Work Interval</div>
+                <div class='titleTimer'>Work Interval</div>
                 <div class="workTime" id="workTime">10</div>
+                <div>
             <button class="workPlus" onclick="workPlus()">+</button>
             <button class="workMinus" onclick="workMinus()">-</button>
+                </div>
             </div>
             <div>
               <canvas class='canvas' id='canvas1' width='250' height='250'>
@@ -33,10 +38,10 @@ and open the template in the editor.
             <button class='startWork' onclick='startWork(); beginCountdown();'>Start Work</button>
             <button class='stop' onclick='stop(); endCountdown();'>Stop</button>
             <button class="reset" onclick="reset(); resetCountdown();">Reset</button>
-            <button class='startBreak' onclick='startBreak()'>Start Break</button>            
+            <button class='startBreak' onclick='startBreak(); beginCountdown();'>Start Break</button>            
             </div>
             <div class="breakTimer">
-                <div>Break Interval</div>
+                <div class='titleTimer'>Break Interval</div>
                 <div class="breakTime" id="breakTime">5</div>
             <button class="breakPlus" onclick="breakPlus()">+</button>
             <button class="breakMinus" onclick="breakMinus()">-</button>

@@ -6,6 +6,7 @@ document.getElementById('mainTime').innerHTML = minutes;
 let breakTime = parseFloat(document.getElementById('breakTime').innerHTML.valueOf());
 let breakMinutes = breakTime;
 let breakSeconds = '';
+let chime = document.getElementById('chime');
 
 
 function decrement(){
@@ -18,13 +19,14 @@ function decrement(){
        document.getElementById('mainTime').innerHTML = minutes + ':' + seconds;       
    }
    else if(minutes == 0 & seconds == 0) {
-       document.getElementById('mainTime').innerHTML = "time's up, take a break!";
+       document.getElementById('mainTime').innerHTML = "Break Time!";
        stop();
        workTime = parseFloat(document.getElementById('workTime').innerHTML.valueOf());
        minutes = workTime;
        seconds = 0;
        resetCountdown();
        endCountdown();
+       playChime();
 
    }
 };
@@ -38,13 +40,14 @@ function decrementBreak(){
        document.getElementById('mainTime').innerHTML = breakMinutes + ':' + breakSeconds;       
    }
    else if(breakMinutes == 0 & breakSeconds == 0){
-       document.getElementById('mainTime').innerHTML = "time's up, back to work!";
+       document.getElementById('mainTime').innerHTML = "Work Time!";
        stop();
        breakTime = parseFloat(document.getElementById('breakTime').innerHTML.valueOf());
        breakMinutes = breakTime;
        seconds = 0;
        resetCountdown();
        endCountdown();
+       playChime();
    }
 };
 var foobs ='';
@@ -72,6 +75,7 @@ function workPlus(){
    document.getElementById('mainTime').innerHTML = workTime;
    minutes = workTime;
    seconds = '';
+   resetCountdown();
 }
 function workMinus(){
    workTime = parseFloat(document.getElementById('workTime').innerHTML.valueOf());
@@ -80,17 +84,24 @@ function workMinus(){
    document.getElementById('mainTime').innerHTML = workTime;
    minutes = workTime;
    seconds = '';
+   resetCountdown();
 
 }
 function breakPlus(){
    breakTime = parseFloat(document.getElementById('breakTime').innerHTML.valueOf());
    breakTime += 1;
    document.getElementById('breakTime').innerHTML = breakTime;
+   breakMinutes = breakTime;
+   breakSeconds = '';
+   resetCountdown();
 }
 function breakMinus(){
    breakTime = parseFloat(document.getElementById('breakTime').innerHTML.valueOf());
    breakTime -= 1;
    document.getElementById('breakTime').innerHTML = breakTime;
+   breakMinutes = breakTime;
+   breakSeconds = '';
+   resetCountdown();
 }
 
 // circular countdown timer
@@ -112,6 +123,7 @@ function resetCountdown(){
     drawEmptyCircle();
     currentStartAngle = 0;
     currentEndAngle = 0;
+    clearInterval(counting);
 }
     var canvas = document.getElementById("canvas1");
     var ctx = canvas.getContext("2d");
@@ -120,7 +132,7 @@ function rad(deg){
 }
 function draw() { 
 
-    var can = document.getElementById('canvas1'); // GET LE CANVAS
+    var can = document.getElementById('canvas1'); 
     var canvas = document.getElementById("canvas1");
     var context = canvas.getContext("2d");
     var x = canvas.width / 2;
@@ -136,7 +148,7 @@ function draw() {
     
     if (Math.floor(currentStartAngle / 2) % 2) {
       currentColor = "white";
-      radius = lineRadius - 1;
+      radius = lineRadius;
       width = lineWidth;
     } else {
       currentColor = "black";
@@ -167,4 +179,7 @@ function drawEmptyCircle(){
   ctx.stroke();
 }
 
+function playChime(){
+    chime.play();
+}
 
