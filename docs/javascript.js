@@ -6,6 +6,7 @@ document.getElementById('mainTime').innerHTML = minutes;
 let breakTime = parseFloat(document.getElementById('breakTime').innerHTML.valueOf());
 let breakMinutes = breakTime;
 let breakSeconds = '';
+let chime = document.getElementById('chime');
 
 
 function decrement(){
@@ -18,13 +19,14 @@ function decrement(){
        document.getElementById('mainTime').innerHTML = minutes + ':' + seconds;       
    }
    else if(minutes == 0 & seconds == 0) {
-       document.getElementById('mainTime').innerHTML = "time's up, take a break!";
+       document.getElementById('mainTime').innerHTML = "Break Time!";
        stop();
        workTime = parseFloat(document.getElementById('workTime').innerHTML.valueOf());
        minutes = workTime;
        seconds = 0;
        resetCountdown();
        endCountdown();
+       playChime();
 
    }
 };
@@ -38,13 +40,14 @@ function decrementBreak(){
        document.getElementById('mainTime').innerHTML = breakMinutes + ':' + breakSeconds;       
    }
    else if(breakMinutes == 0 & breakSeconds == 0){
-       document.getElementById('mainTime').innerHTML = "time's up, back to work!";
+       document.getElementById('mainTime').innerHTML = "Work Time!";
        stop();
        breakTime = parseFloat(document.getElementById('breakTime').innerHTML.valueOf());
        breakMinutes = breakTime;
        seconds = 0;
        resetCountdown();
        endCountdown();
+       playChime();
    }
 };
 var foobs ='';
@@ -64,6 +67,10 @@ function reset(){
     document.getElementById('mainTime').innerHTML = workTime;
     minutes = workTime;
     seconds = 0;
+    breakTime = parseFloat(document.getElementById('breakTime').innerHTML.valueOf());
+    document.getElementById('mainTime').innerHTML = breakTime;
+    breakMinutes = breakTime;
+    breakSeconds = 0;
 }
 function workPlus(){
    workTime = parseFloat(document.getElementById('workTime').innerHTML.valueOf());
@@ -72,6 +79,7 @@ function workPlus(){
    document.getElementById('mainTime').innerHTML = workTime;
    minutes = workTime;
    seconds = '';
+   resetCountdown();
 }
 function workMinus(){
    workTime = parseFloat(document.getElementById('workTime').innerHTML.valueOf());
@@ -80,17 +88,24 @@ function workMinus(){
    document.getElementById('mainTime').innerHTML = workTime;
    minutes = workTime;
    seconds = '';
+   resetCountdown();
 
 }
 function breakPlus(){
    breakTime = parseFloat(document.getElementById('breakTime').innerHTML.valueOf());
    breakTime += 1;
    document.getElementById('breakTime').innerHTML = breakTime;
+   breakMinutes = breakTime;
+   breakSeconds = '';
+   resetCountdown();
 }
 function breakMinus(){
    breakTime = parseFloat(document.getElementById('breakTime').innerHTML.valueOf());
    breakTime -= 1;
    document.getElementById('breakTime').innerHTML = breakTime;
+   breakMinutes = breakTime;
+   breakSeconds = '';
+   resetCountdown();
 }
 
 // circular countdown timer
@@ -102,6 +117,9 @@ var lineWidth = 25;
 function beginCountdown(){
  counting = setInterval(draw, 40);
 }
+function beginBreakCountdown() {
+    counting = setInterval(draw, 40);
+}
 
 function endCountdown() {
     clearInterval(counting);
@@ -112,6 +130,7 @@ function resetCountdown(){
     drawEmptyCircle();
     currentStartAngle = 0;
     currentEndAngle = 0;
+    clearInterval(counting);
 }
     var canvas = document.getElementById("canvas1");
     var ctx = canvas.getContext("2d");
@@ -120,23 +139,22 @@ function rad(deg){
 }
 function draw() { 
 
-    var can = document.getElementById('canvas1'); // GET LE CANVAS
-    var canvas = document.getElementById("canvas1");
-    var context = canvas.getContext("2d");
-    var x = canvas.width / 2;
-    var y = canvas.height / 2;
+    var can = document.getElementById('canvas1'); 
+    var canvas = document.getElementById("canvas1"); // get canvas element
+    var context = canvas.getContext("2d"); // create canvas context
+    var x = canvas.width / 2; //set canvas width
+    var y = canvas.height / 2; // set canvas height
     var radius;
     var width;
-
-    startAngle = currentStartAngle * Math.PI;
-    endAngle = (currentEndAngle) * Math.PI;
+    startAngle = currentStartAngle * Math.PI; // starting angle calculated how?
+    endAngle = (currentEndAngle) * Math.PI; // ending angle calculated how?
     
     currentStartAngle = currentEndAngle - 0.01;
     currentEndAngle = currentEndAngle + 0.01;
     
     if (Math.floor(currentStartAngle / 2) % 2) {
       currentColor = "white";
-      radius = lineRadius - 1;
+      radius = lineRadius;
       width = lineWidth;
     } else {
       currentColor = "black";
@@ -153,8 +171,6 @@ function draw() {
     // line color
     context.strokeStyle = currentColor;
     context.stroke();
-
-    /************************************************/
 }
 
 function drawEmptyCircle(){
@@ -167,4 +183,7 @@ function drawEmptyCircle(){
   ctx.stroke();
 }
 
+function playChime(){
+    chime.play();
+}
 
