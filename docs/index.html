@@ -27,24 +27,24 @@ and open the template in the editor.
                 <div class='titleTimer'>Work Interval</div>
                 <div class="workTime" id="workTime">10</div>
                 <div>
-            <button class="workPlus" onclick="workPlus()">+</button>
-            <button class="workMinus" onclick="workMinus()">-</button>
+            <button class="workPlus btn btn-default" onclick="workPlus()">+</button>
+            <button class="workMinus btn btn-default" onclick="workMinus()">-</button>
                 </div>
             </div>
             <div>
               <canvas class='canvas' id='canvas1' width='250' height='250'>
               </canvas>
             <div class='mainTime' id='mainTime'>0</div> 
-            <button class='startWork' onclick='startWork(); beginCountdown();'>Start Work</button>
-            <button class='stop' onclick='stop(); endCountdown();'>Stop</button>
-            <button class="reset" onclick="reset(); resetCountdown();">Reset</button>
-            <button class='startBreak' onclick='startBreak(); beginBreakCountdown();'>Start Break</button>            
+            <button class='startWork btn btn-default' onclick='startWork(); beginCountdown();'>Start Work</button>
+            <button class='stop btn btn-default' onclick='stop(); endCountdown();'>Stop</button>
+            <button class="reset btn btn-default" onclick="reset(); resetCountdown();">Reset</button>
+            <button class='startBreak btn btn-default' onclick='startBreak(); beginBreakCountdown();'>Start Break</button>            
             </div>
             <div class="breakTimer">
                 <div class='titleTimer'>Break Interval</div>
                 <div class="breakTime" id="breakTime">5</div>
-            <button class="breakPlus" onclick="breakPlus()">+</button>
-            <button class="breakMinus" onclick="breakMinus()">-</button>
+            <button class="breakPlus btn btn-default" onclick="breakPlus()">+</button>
+            <button class="breakMinus btn btn-default" onclick="breakMinus()">-</button>
             </div>
         </div>
         <script src='javascript.js'></script>
