@@ -10,11 +10,14 @@ body {
     max-width: 60%;
     height: 400px;
     max-height: 60%;
-    background: #22f;
+    background: #46a;
     position: relative;
     margin: 10%;
     padding: 30px;
     border-radius: 20px;
+    -webkit-box-shadow: 4px 5px 3px 6px #aaa;  
+    -moz-box-shadow:    4px 5px 3px 6px #aaa;  
+    box-shadow:         4px 5px 3px 6px #aaa; 
 }
 .mainTime{
     font-size: 50px;
@@ -72,4 +75,6 @@ body {
 }
 
 .canvas {
+    position: relative;
+    left: 28px;
 }

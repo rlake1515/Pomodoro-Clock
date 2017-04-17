@@ -68,7 +68,6 @@ function reset(){
     minutes = workTime;
     seconds = 0;
     breakTime = parseFloat(document.getElementById('breakTime').innerHTML.valueOf());
-    document.getElementById('mainTime').innerHTML = breakTime;
     breakMinutes = breakTime;
     breakSeconds = 0;
 }
